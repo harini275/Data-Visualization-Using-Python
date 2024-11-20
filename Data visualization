@@ -1,0 +1,140 @@
+'' Importing Necessary Libraries ''
+
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from pandas.plotting import scatter_matrix
+import plotly.express as px
+import warnings
+warnings.filterwarnings("ignore")
+
+'' Creating DataFrame ''
+number_points=20
+df=pd.DataFrame(np.random.randn(number_points,3),index=np.arange(number_points),columns=list("XYZ"))
+df
+
+'' Pandas - Line Plot''
+df.plot(figsize=(10,10))
+plt.title("Pandas-Line Plot\n",fontsize=15,color="red")
+plt.grid(True)
+plt.show()
+
+#Barplot
+df.plot(kind='bar',figsize=(10,10))
+plt.title("BarPlot\n",fontsize=15,color="black")
+plt.show()
+
+#Stacked Bar Plot
+df.plot.bar(stacked=True,figsize=(10,10))
+plt.title("Stacked Bar Plot\n",fontsize=15,color="black")
+plt.show()
+
+#Areaplot
+df.plot.area(stacked=False,figsize=(10,10))
+plt.title("Area  Plot\n",fontsize=15,color="black")
+plt.show()
+
+#Scatter Plot
+df.plot(kind='scatter', x="X", y="Y",figsize=(10,10),color="green",s=100);
+plt.title("Scatter Plot\n",fontsize=15,color="blue")
+plt.xlabel("\nX_Label",fontsize=15,color="black")
+plt.ylabel("Y_label\n",fontsize=15,color="black")
+plt.grid(True)
+plt.show()
+
+#Formatting Scatter Plot
+df.plot.scatter(x="X", y="Y", c="Z", cmap="PuBu",s=100,figsize=(10,10))
+plt.title("Formatting Scatter Plot\n",fontsize=15,color="black")
+plt.grid(True)
+plt.show()
+
+#Box Plot
+df.boxplot(grid=False,figsize=(10,10))
+plt.title("Box Plot\n",color="black",fontsize=15)
+plt.show()
+
+#Histogram
+df.plot(kind='hist', alpha=0.5,figsize=(10,10))
+plt.title("Histogram\n",fontsize=15,color="black")
+plt.show()
+
+df.hist(figsize=(10,10))
+plt.title("Histogram\n",fontsize=15,color="black")
+plt.show()
+
+############Create DataFrame ##########
+np.random.seed(130)
+data= pd.DataFrame({"a": np.random.randn(1000)+2,"b": np.random.randn(1000),"c": np.random.randn(1000)-2 },columns=["a", "b", "c"])
+data
+
+#Stacked histogram
+data.plot(kind='hist', stacked=True, bins=25,figsize=(10,10))
+plt.title("Stacked Histogram\n",color="black",fontsize=15)
+plt.show()
+
+#Matplotlib Histogram
+plt.figure(figsize=(10,10))
+plt.hist(x=data,bins=100,facecolor="blue",alpha=0.5,orientation="horizontal",ec="red")
+plt.title("Matplotlib Histogram\n",color="black",fontsize=15)
+plt.show()
+
+#Density
+data.plot(kind='kde',figsize=(10,10));
+plt.title("Density\n",fontsize=15,color="black")
+plt.grid(True)
+plt.show()
+
+#SeaBorn Distplot
+plt.figure(figsize=(10,10))
+sns.distplot(x=data[["a","b"]], bins=40, hist=False,color='purple',hist_kws={"edgecolor": 'black',"linewidth":3},kde=True)
+plt.grid(True)
+plt.show()
+
+#Seaborn Kde Plot
+plt.figure(figsize=(10,10))
+sns.kdeplot(x=data["a"],shade=True)
+plt.title("Seaborn Kde Plot\n",color="black",fontsize=15)
+plt.grid(True)
+plt.show()
+
+#Scatter_Matrix
+scatter_matrix(data, alpha=0.9, figsize=(10, 10), s=100, diagonal="kde")
+plt.show()
+
+fig=px.scatter_matrix(data,dimensions=["a","b","c"])
+fig.show()
+
+#piechart
+pie_chart_data = pd.DataFrame({'Sales': [70, 30 , 55, 20],'Profit': [700, 600, 1550, 100]},index=['Product-A', 'Product-B', 'Product-C', 'Product-D'])
+pie_chart_data
+label_name=["Product-A","Product-B","Product-C","Product-D"]
+pie_chart_data.plot.pie(y='Profit', figsize=(10,10),labels=label_name,autopct="%.2f",fontsize=16)
+plt.show()
+
+
+plt.figure(figsize=(10,10))
+data = {'Python':29,
+        'Javascript':26,
+        'java':21,
+        'C':17,
+        'C++':11}
+colors = ['orange', 'green', 'cyan', 'skyblue', 'yellow']
+highlight =(0,0,0.2,0.3,0)
+plt.pie(list(data.values()), explode=highlight, labels=data.keys(), colors=colors, autopct='%2.1f%%', shadow=True, startangle=90)
+plt.title("Pie Chart\n",color="black",fontsize=15)
+plt.legend(loc="best")
+plt.axis('equal')
+plt.show()
+
+plt.figure(figsize=(10,10))
+number_list= [2, 5, 3, 1, 4]
+labels = ["A", "B", "C", "D", "E"]
+colors = ["#1abc9c", "#2c3e50", "#e67e22", "#8e44ad", "#c0392b"]
+explode = [0, 0, 0.1, 0.2, 0]
+wedge_properties = {"edgecolor":"k",'linewidth': 2}
+
+plt.pie(number_list, labels=labels, explode=explode, colors=colors, startangle=45,counterclock=False, shadow=True, wedgeprops=wedge_properties,autopct="%1.2f%%", pctdistance=0.7)
+plt.title("Pie Chart\n",color="black",fontsize=15)
+plt.legend(loc="best")
+plt.show()
