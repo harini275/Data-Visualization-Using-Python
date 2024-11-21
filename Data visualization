@@ -1,3 +1,30 @@
+-----------------Data visualization using python library --------------------------------
+''Pandas'' 
+Pandas is an open-source Python library designed for data manipulation and analysis. 
+It provides data structures and functions to work efficiently with structured data, particularly tabular data, 
+such as that found in spreadsheets or SQL tables. The primary data structures in Pandas are DataFrames and Series.
+
+''Plotly''
+The most popular data visualization library in Python is Plotly, 
+which delivers an interactive plot and is easily readable to beginners. 
+It is widely used for handling financial, geographical, statistical, and scientific data. 
+
+''NumPy - excels in numerical computations and array handling''
+NumPy is an open-source Python library essential for numerical computing, 
+particularly known for its support of large, multi-dimensional arrays and matrices. 
+It provides a high-performance array object called ndarray, which allows for efficient storage and manipulation of numerical data.
+
+''Matplotlib - offers extensive customization but requires more code and is less intuitive''
+Matplotlib is a powerful and widely-used data visualization library in Python, designed for creating static, 
+animated, and interactive visualizations.it has become a fundamental tool for data analysis and representation in the Python ecosystem.
+
+''Seaborn - built on Matplotlib, simplifies statistical visualizations with better aesthetics and ease of use''
+Seaborn is a powerful Python data visualization library built on top of Matplotlib, specifically designed for statistical graphics. 
+It simplifies the process of creating complex visualizations and enhances the aesthetics of plots 
+with attractive default styles and visualized patterns.
+It is designed to work more compatible with Pandas data form and is widely used for statistical visualization. 
+---------------------------------------------------------------------------------------------------------------------------
+
 '' Importing Necessary Libraries ''
 
 import seaborn as sns
